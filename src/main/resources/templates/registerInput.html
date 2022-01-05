@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Project</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2>Cash Register App</h2>
+            <form action="#" th:action="@{/receiveChange}"
+                  method="get" class="form">
+                <div class="form-row">
+                    <div class="col-md-6 form-group">
+                        <label>Purchase Price</label>
+                        <input type="text"  class="form-control" name="currency-field" id="currency-field" pattern="^([0-9]+\.?[0-9]*|\.[0-9]+)$" value=""  placeholder="0.00" th:name="price" default="0.00">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Payment Amount</label>
+                        <input type="text"  class="form-control" name="currency-field" id="currency-payment" pattern="^([0-9]+\.?[0-9]*|\.[0-9]+)$" value=""  placeholder="0.00" th:name="payment" default="0.00">
+                    </div>
+                <button type="submit" class="btn btn-primary btn-block mt-3">Get Change</button>
+                </div>
+                <h3>Your Change is: </h3>
+                <tr th:each="money: ${change}">
+                    <td th:text="${money.numberOfDenomination}" />
+                    <td th:text="${money.denomination}" />
+                </tr>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
